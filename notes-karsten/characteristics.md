@@ -48,6 +48,7 @@ Based on the list in Chapter 4 of "Fundamentals of Software Architecture" by Mar
 |-----------------|----------------|
 | Affordability | non profit, therefore should be cheap. But development work might be done with crowdsourcing |
 | Hackability | The project should inspire coders and makers to enhance it. |
+| Energy Efficency | Very important for the camera device, normal for other systems |
 
 
 
