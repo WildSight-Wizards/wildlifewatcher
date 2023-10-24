@@ -61,6 +61,11 @@ organise community events, seminars and educational activities to build and main
 * Data is not stored in the cloud, regarding wildlife sightings (i.e. uploaded straight to third party services)
 * Wildlife.ai have basic tech skills (in the major cloud providers) to support a solution. No experience with third party providers for monitoring etc.
 
+# Technology Choices
+
+
+![Polly Logo](<1 dqHU0u0G8EXYFFRc-S0NuA.jpg>)
+
 # Use Cases
 
 * Upload to platforms
