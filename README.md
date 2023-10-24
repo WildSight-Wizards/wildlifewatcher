@@ -31,19 +31,22 @@ V. Prioritized Architecture Characteristics <br />
 VI. Requirements <br />
 VII. Design Constraints <br />
 VIII. High-Level Architecture <br />
-IX. Selected Topics of Mid-Level Architecture <br />
+IX. Risks
+X. Selected Topics of Mid-Level Architecture <br />
   Limp-home mode <br />
   The Missing Data Tier <br />
   How we Avoid Firebase Lock-in <br />
   Lean on Data <br />
   ChefTec Integration <br />
-IX. ADRs <br />
+XI. ADRs <br />
   ADR 1. Use of API <br />
   ADR 2. Use of healthcheck pattern <br />
   ADR 3. Use of API Gateway <br />
   ADR 4. Use of Application Gateway <br />
   ADR 5. Use of Keyvault <br />
   ADR 6. Use of cognitive services <br />
+  ADR 7. Use of Azure Policy
+  ADR 8. Use of Azure AD 
 
 # Overview
 
@@ -346,5 +349,7 @@ Lack of APIs on third party systems
 # Threat Modelling
 
 # Risk Storming
+
+![Risk Model](image.png)
 
 # Architectural Decision Records
