@@ -55,6 +55,11 @@ organise community events, seminars and educational activities to build and main
 * Data is not stored in the cloud, regarding wildlife sightings (i.e. uploaded straight to third party services)
 * Wildlife.ai have basic tech skills (in the major cloud providers) to support a solution. No experience with third party providers for monitoring etc.
 
+# Considerations
+
+Cameras will be deployed, and also removed/broken. We will need some form of "bootstrapping" or "service discovery" mechanism to know what cameras are deployed i.e. a registry. The
+API can then 
+
 # Use Cases
 
 * Upload to platforms
@@ -108,6 +113,7 @@ exchange format <br />
 ## REQ-006 Cameras should be able to process the footage on the device and send a small alert
 message to the users via LoraWan, 3G or satellite. <br />
 
+## REQ
 
 ## A map function will need to display all the locations with cameras installed in the region
 
