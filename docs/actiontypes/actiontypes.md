@@ -10,9 +10,7 @@ to understand if the implementation is manually executed from the mobile client,
 
 # The following is user-initiated, but managed in the cloud:
 
-## REQ-004 Users should be able to easily train edge models. using their own labelled videos, and
-upload the models to the cameras (using third party services like Roboflow, Edge Impulse or
-TensorFlow Lite) <br />
+## REQ-004 Users should be able to easily train edge models. using their own labelled videos, and upload the models to the cameras (using third party services like Roboflow, Edge Impulse or TensorFlow Lite) <br />
 
 # The following is initiated on the camera:
 

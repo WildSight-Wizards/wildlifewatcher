@@ -7,7 +7,14 @@ that we facilitate allowing users to focus on value and the core domain - specie
 To this effect, a small program will need to run which will get the details of the camera and publish it to the registry.
 This registry is used by the API to discover cameras belonging to specific users (i.e. partitioned on a UserID key).
 
+Responsibilities:
+- Bootstrap camera details to central registry
+- Provide connectivity details
+- Provide healthcheck endpoint
+
 # Architecture Style
 
+![Camera Bootstrap](image-1.png)
 
 # Architecture Characteristics
+
