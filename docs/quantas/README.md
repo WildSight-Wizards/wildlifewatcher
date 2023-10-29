@@ -1,0 +1,2 @@
+Note that while the benefit of individual microservices is that each microservice can ha ve its own architectural characteristics,
+we have identified the same characteristics for all components throughout the system (components = quantas).
