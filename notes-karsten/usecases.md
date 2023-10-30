@@ -39,7 +39,7 @@ A user may want to improve the classification on the device. The user can use th
 
 We can tell a story about the use cases, with the different users, starting with the animal:
 
-"Winfried the Weta belongs to an engade species. He is afraid of humans, so he hides whenever hears the sound of a human, and he lives only far away from human villages. But we can only protect his nature if we know thatb he is there.
+"Winfried the Weta belongs to an endangered species. He is afraid of humans, so he hides whenever hears the sound of a human, and he lives only far away from human villages. But we can only protect his nature if we know thatb he is there.
 We need therfore a camera that works without a human near it. "
 Now we can explain the characteristics:
 The camera need to have long battery life. It should be cheap, so we can set up many of the cameras and increase the chance to find Winfried. But the network is bad where Winfried lives,...."

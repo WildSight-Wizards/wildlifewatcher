@@ -49,22 +49,21 @@ organise community events, seminars and educational activities to build and main
 
 # Assumptions
 
-* Only deployed in one region
-* Only mobile client (so no BFF pattern to use or clients competing with different requirements)
-* No analytics functionality required (i.e. Azure Data Explorer)
-* Data is not stored in the cloud, regarding wildlife sightings (i.e. uploaded straight to third party services)
-* Wildlife.ai have basic tech skills (in the major cloud providers) to support a solution. No experience with third party providers for monitoring etc.
+* We assume that a thorough vetting process is applied for accepting users onto the platform to ensure, as much as possible, that information regarding animals location and numbers are not made available to animal poachers and other such criminal organisations. We expect this facility to be in place as it will be very difficult for the application to ensure the user's genuine reasons for requesting such information. 
+* Start with a mobile client and a web application. Same responsive and adaptive application (BFFs might be used in the future)
+* Observability using Cloud native solutions at the beginnig. No particular reporting needs but the solution should accommodate such requirements in the future.
 
 # Considerations
 
-Cameras will be deployed, and also removed/broken. We will need some form of "bootstrapping" or "service discovery" mechanism to know what cameras are deployed i.e. a registry. The
-API can then 
+* Cameras will have to have the ability of connecting to a message broker using IoT protocols MQTT would be preferable. 
+* Cameras will be programmed to send a heartbeat message at regular intervals for as long as they are live.
 
 # Use Cases
 
 * Upload to platforms
 * View device information
 * Analyse frames
+* Analyse video
 
 # Risks
 
@@ -77,30 +76,31 @@ API can then
 # Priotized Architecture Characteristics
 
 ## Deployability
-Wildlife.AI will potentially deploy to hundreds, if not thousands, of cameras in the wild where network connectivity may be poor. Thus, any deployment to cameras, be it code or models, must be quick and easy. We would like to avoid issues where a camera in the middle of a deployment goes offline and have different code versions across the fleet of cameras.
+Wildlife.AI will potentially deploy to hundreds, if not thousands, of cameras in the wild where network connectivity may be poor. Thus, any deployment to cameras, be it code or models, must be quick and easy. We would like to avoid issues where a camera in the middle of a deployment goes offline and have different code versions across the fleet of cameras. We will require the cameras to be programmed to accommodate the following functions:
+* Connect to a message broker of choice MQTT, AMQPS, HTTPS
+* Send a Heartbeat message containing camera specific information (IP, device version, capabilities) at regular intervals
+* Send captured images whenever a "Movement" event was triggered. 
 
 ## Affordability
-Wildlife.ai are a charity and thus any solution envisaged must be affordable and without costly third party licenses. The solution must avoid the use of expensive third-party solutions and use Azure native services as much as possible, although this may risk cloud vendor lock-in.
-
-## Fault Tolerance
-Given the harsh environment wildlife.ai operate in, the application must be able to endure and withstand any faults, e.g. if a camera is damaged, which is possible.
+Wildlife.ai are a charity and thus any solution envisaged must be affordable and without costly third party licenses. The solution must avoid the use of expensive third-party solutions and use cloud native services avoiding cloud vendor lock-in.
 
 ## Availability
-The application must be available at all times. This is crucial to ensurte that all relevant wildsight sightings are captured by the camera and subsequently uploaded, and so that the application captures a wholely accurate state of the environment it is in, to aid research.
+Employ architectural design patterns to handle exceptions and erros in such a way to maintain the following the availabiltiy for the following functionality:
+* Endpoints for cameras to connect into as long as possible; starting with 1-nine of availability for the Streaming platform.
+* Web application for Widlife.ai users' access to images, cameras management and observations is important but we consider that a 
+Given the harsh environment wildlife.ai cameras operate in, the equipment must be able to endure and withstand physical damage as much as possible.
 
 ## Privacy
-Anytime the use of AI is involved, privacy (and by extension, ethics) are key considerations. This is to ensure the data captured is not breached and used by adverse actors, such as animal hunters/poachers - which goes against the entire mission of Wildlife.AI.
+Access to the data captures regarding animals locations and other duch details represent important pieces of information for the future of animals concerned. Therefore, a thorough vetting process must be applied for accepting users onto the platform. 
+The repositories employed within the solution, the images repository and the  
 
-## Performance
-Videos need to be uploaded in real-time, so performance is critical. In addition, cameras won't have the hardware to run complex code, so the code must be lightweight and optimised where possible.
-
-## Recoverability
-When an application error is encountered, recovery needs to be as fast as possible. It won't be desirable if the application is inoperable and wildlife sightings go by, unnoticed.
+## Observability
+The platform must be highly observable, employing adequate monitoring and alerting facilities, so that it self-heals where possible but also that it informs the support teams to the error occurred.
+The platform will also provide a way for monitoring and alerting in regards to the state of the cameras. The Observability service will subscribe to the Heartbeat topic and monitor the last time a camera was seen alive or battery low or any other issues that it may identify or infer from the Heartbeat, or lack of, messages. 
 
 # Requirements
 
-## REQ-001 - Users should be able to communicate with the camera using a mobile app (to set the
-cameras on/off and adjust settings without opening the cameras) <br />
+## REQ-001 - Users should be able to communicate with the camera remotely for reasons of management such as updating features, uploading subject images,uploading new ML models, downlaoding captured content, checking battery and other operational metrics <br />
 ## REQ-002 - Users should be able to analyse the videos using common camera trap labelling platforms
 (Wildlife Insights, TrapTagger or Trapper) <br />
 ## REQ-003 - Users should be able to publish frames from the videos to iNaturalist for experts to help with
@@ -149,9 +149,8 @@ Lack of APIs on third party systems
 
 # Architectural Decision Records
 
-## Use of API
 ## Use of healthcheck pattern
-## Use of API Gateway
-## Use of Application Gateway
-## Use of keyvault
-## Use of cognitive services
+## Use of API Gateway for exposing a specific API to access Observations and related material (videos, images)
+## Pub/Sub message broker for receiving information from the cameras
+## Event-driven microservices architecture
+## Cameras must provide Software Over the Air functionality via specific topic in the message broker
