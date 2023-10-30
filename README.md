@@ -3,37 +3,20 @@
 V. Prioritized Architecture Characteristics
     1. Deployability
     2. Affordability
-    3. Fault Tolerance
     4. Availability
     5. Privacy
-    6. Scalability
-    7. Performance
+    6. Observability
+    7. Scalability
 VI. Requirements
 VII. Design Constraints
 VIII. High-Level Architecture
-IX. Selected Topics of Mid-Level Architecture
-  Limp=-home mode
-  The Missing Data Tier
-  How we Avoid Firebase Lock-in 
-  Lean on Data
-  ChefTec Integration
-VIII. Milestones
-  Milestone 1. Marketing and Analytics
-  Milestone 2. Mobile App Menu
-  Milestone 3. Mobile App Orders
-  Milestone 4. Web Orders
-  Milestone 5. Customer Profiles
-  Milestone 6. Multi-Location and Scaling Delivery
 IX. ADRs
-  ADR 1. Use of API
-  ADR 2. Use of healthcheck pattern
-  ADR 3. Use of API Gateway
-  ADR 4. Use of Application Gateway
-  ADR 5. Use of keyvault
-  ADR 6. Use of cognitive services
-  ADR 7. Newsletters and Client Communication
-  ADR 8. Smart Fridge Access will be Controlled Both on Prem and via CDN
-  ADR 9. Google Firebase will be used as Presentation Layer
+  ADR 1. Use of healthcheck pattern
+  ADR 2. Use of keyvault
+  ADR 3. Pub/Sub message broker for streaming
+  ADR 4. Event-driven microservices architecture
+  ADR 5. Software Over the Air
+
 
 
 # Overview
@@ -90,9 +73,16 @@ Employ architectural design patterns to handle exceptions and erros in such a wa
 * Web application for Widlife.ai users' access to images, cameras management and observations is important but we consider that a 
 Given the harsh environment wildlife.ai cameras operate in, the equipment must be able to endure and withstand physical damage as much as possible.
 
+## Scalability
+The architecture must ensure that the application can accommodate an increasing number of cameras. People can buy and install cameras at their own expense so the solution must be able to accommodate these cameras when they come online.
+The application must also allow for a growing number of users, both regular users and camera administrators, to subscribe and operate on the platform
+
 ## Privacy
-Access to the data captures regarding animals locations and other duch details represent important pieces of information for the future of animals concerned. Therefore, a thorough vetting process must be applied for accepting users onto the platform. 
-The repositories employed within the solution, the images repository and the  
+Access to the data captures regarding animals locations and other duch details represent important pieces of information for the future of animals concerned. Therefore, a thorough vetting process must be applied for accepting users onto the platform. The user registration process must have 3 stages: 
+1. Registration - users register and submit the required documentation
+2. Vetting - Wildlife.ai ensures that the person wanting to use the platform has been properly verified.
+3. Activation - After the user has been vetted and allowed onto the platform an activation email and unique URL are being generated so that the user can finalise the activaton process.
+ 
 
 ## Observability
 The platform must be highly observable, employing adequate monitoring and alerting facilities, so that it self-heals where possible but also that it informs the support teams to the error occurred.
