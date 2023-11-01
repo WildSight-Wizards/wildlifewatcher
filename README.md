@@ -1,34 +1,11 @@
-
-
-V. Prioritized Architecture Characteristics
-    1. Deployability
-    2. Affordability
-    4. Availability
-    5. Privacy
-    6. Observability
-    7. Scalability
-VI. Requirements
-VII. Design Constraints
-VIII. High-Level Architecture
-IX. ADRs
-  ADR 1. Use of healthcheck pattern
-  ADR 2. Use of keyvault
-  ADR 3. Pub/Sub message broker for streaming
-  ADR 4. Event-driven microservices architecture
-  ADR 5. Software Over the Air
-
-
-
-# Overview
+# Requirements Overview
 
 Wildlife AI is a charitable trust using AI for wildlife conservation. Wildlife.ai work with grassroots wildlife conservation projects and develop open-source solutions using machine learning. They also 
 organise community events, seminars and educational activities to build and maintain machine learning solutions to reduce the current rate of species extinction.
 
-# Tech Choices
+# Proposed Solution
 
-![Polly Logo](<1 dqHU0u0G8EXYFFRc-S0NuA.jpg>)
-
-![dotnet core logo](NET_Core_Logo.svg.png)
+The proposed solution is captured in the <a href="architecture.md">Architecture page</a>
 
 # Assumptions
 
@@ -50,41 +27,38 @@ organise community events, seminars and educational activities to build and main
 
 # Risks
 
-* Lack of expertise.
-* Affordability of monitoring
-* Deployability to a poor-network issue.
-* Lack of control (or a "limp-home" mode) with regards to third party service dependencies
-* The exclusive use of Azure, while promoting cohesion and cost-effectiveness, does also present a risk of vendor lock in.
+* Animal poachers or such criminals can take advantage of the information made available through this solution
+* Cameras may not have the necessary hardware capabilities to connect to the message broker for heartbeat and updates so more manual interventions required
 
-# Priotized Architecture Characteristics
+# Priotised Architecture Characteristics
 
-## Deployability
-Wildlife.AI will potentially deploy to hundreds, if not thousands, of cameras in the wild where network connectivity may be poor. Thus, any deployment to cameras, be it code or models, must be quick and easy. We would like to avoid issues where a camera in the middle of a deployment goes offline and have different code versions across the fleet of cameras. We will require the cameras to be programmed to accommodate the following functions:
+# Deployability
+Wildlife.AI will potentially deploy hundreds, if not thousands, of cameras in the wild where network connectivity may be poor. We will require the cameras to be programmed to accommodate the following functions:
 * Connect to a message broker of choice MQTT, AMQPS, HTTPS
 * Send a Heartbeat message containing camera specific information (IP, device version, capabilities) at regular intervals
-* Send captured images whenever a "Movement" event was triggered. 
+* Send captured images whenever a "Movement" event was triggered
+* Connect to a specific message broker topic to collect updates - new ML model, new image to recognize, new software features
 
-## Affordability
+# Affordability
 Wildlife.ai are a charity and thus any solution envisaged must be affordable and without costly third party licenses. The solution must avoid the use of expensive third-party solutions and use cloud native services avoiding cloud vendor lock-in.
 
-## Availability
+# Availability
 Employ architectural design patterns to handle exceptions and erros in such a way to maintain the following the availabiltiy for the following functionality:
 * Endpoints for cameras to connect into as long as possible; starting with 1-nine of availability for the Streaming platform.
 * Web application for Widlife.ai users' access to images, cameras management and observations is important but we consider that a 
 Given the harsh environment wildlife.ai cameras operate in, the equipment must be able to endure and withstand physical damage as much as possible.
 
-## Scalability
+# Scalability
 The architecture must ensure that the application can accommodate an increasing number of cameras. People can buy and install cameras at their own expense so the solution must be able to accommodate these cameras when they come online.
 The application must also allow for a growing number of users, both regular users and camera administrators, to subscribe and operate on the platform
 
-## Privacy
+# Privacy
 Access to the data captures regarding animals locations and other duch details represent important pieces of information for the future of animals concerned. Therefore, a thorough vetting process must be applied for accepting users onto the platform. The user registration process must have 3 stages: 
 1. Registration - users register and submit the required documentation
 2. Vetting - Wildlife.ai ensures that the person wanting to use the platform has been properly verified.
 3. Activation - After the user has been vetted and allowed onto the platform an activation email and unique URL are being generated so that the user can finalise the activaton process.
- 
 
-## Observability
+# Observability
 The platform must be highly observable, employing adequate monitoring and alerting facilities, so that it self-heals where possible but also that it informs the support teams to the error occurred.
 The platform will also provide a way for monitoring and alerting in regards to the state of the cameras. The Observability service will subscribe to the Heartbeat topic and monitor the last time a camera was seen alive or battery low or any other issues that it may identify or infer from the Heartbeat, or lack of, messages. 
 
