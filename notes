@@ -1,0 +1,24 @@
+Meeting Fri 17/11
+
+Assumptions:
+Cameras should be connected to lorawan via a separate hardware component
+
+Discussions:
+Camera sends captures only of images or frames it is not sure about
+Camera sends messages for animals it spots if it is confident is an animal it knows
+Camera sends frames batches rather than video streaming
+
+Push notifications from the web app. Users should be able to subscribe to push notifications for any spottings, cameras, tagging requests
+
+iNaturalist integration may need to be correlated with the other automated tagging system. A workflow or hierarchy of tagging systems. The assumption here is that iNaturalist is more manual whereas the other tagging facilities are automated, larger ML models.
+Taggers Hierarchy to be defined with external taggers only when needed if the internal systems dont work
+
+Observation service subscribes to messages for clear observations. Decision is that the Camera will send the image associated with a motion trigger regardless of whether it can tag an animal or not.
+
+Identify ilities from Requirements
+
+Identify performance levels, metrics based on Requirements
+
+Video Storyline
+
+External Tagging System wildlife.ai community through the web app allow users to tag like iNaturalist
