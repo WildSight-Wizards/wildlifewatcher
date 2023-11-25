@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" modified="2023-11-23T08:49:40.661Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/119.0" etag="m2bSU9mZdh9t4V3S3EE3" version="22.1.3" type="device">
+  <diagram name="Page-1" id="8gNePZnd2mlt78dNg0zk">
+    <mxGraphModel dx="1026" dy="604" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IPdNB0-iiIDCXA5rxbPq-1" value="&lt;strong&gt;Wildlife Monitoring and Identification&lt;/strong&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IPdNB0-iiIDCXA5rxbPq-2" value="&lt;strong&gt;Image Processing and Analysis&lt;/strong&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IPdNB0-iiIDCXA5rxbPq-3" value="&lt;strong&gt;Data Management and Storage&lt;/strong&gt;:" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="350" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IPdNB0-iiIDCXA5rxbPq-4" value="&lt;h3&gt;User Interaction and Management&lt;/h3&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="414" y="350" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IPdNB0-iiIDCXA5rxbPq-5" value="&lt;h3&gt;Streaming and Event Handling&lt;/h3&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
