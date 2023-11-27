@@ -64,22 +64,20 @@ The platform will also provide a way for monitoring and alerting in regards to t
 
 # Requirements
 
-## REQ-001 - Users should be able to communicate with the camera remotely for reasons of management such as updating features, uploading subject images,uploading new ML models, downlaoding captured content, checking battery and other operational metrics <br />
-## REQ-002 - Users should be able to analyse the videos using common camera trap labelling platforms
-(Wildlife Insights, TrapTagger or Trapper) <br />
-## REQ-003 - Users should be able to publish frames from the videos to iNaturalist for experts to help with
-the identification of the species <br />
-## REQ-004 Users should be able to easily train edge models. using their own labelled videos, and
+* REQ-001 - Users should be able to communicate with the camera remotely for reasons of management such as updating features, uploading subject images,uploading new ML models, downlaoding captured content, checking battery and other operational metrics.
+* REQ-002 - Users should be able to analyse the videos using common camera trap labelling platforms
+(Wildlife Insights, TrapTagger or Trapper).
+* REQ-003 - Users should be able to publish frames from the videos to iNaturalist for experts to help with
+the identification of the specie.
+* REQ-004 Users should be able to easily train edge models. using their own labelled videos, and
 upload the models to the cameras (using third party services like Roboflow, Edge Impulse or
-TensorFlow Lite) <br />
-## REQ-005 Users should be able to publish the species occurrences to GBIF the Camtrap DP, data
-exchange format <br />
-## REQ-006 Cameras should be able to process the footage on the device and send a small alert
-message to the users via LoraWan, 3G or satellite. <br />
+TensorFlow Lite).
+* REQ-005 Users should be able to publish the species occurrences to GBIF the Camtrap DP, data
+exchange format.
+* REQ-006 Cameras should be able to process the footage on the device and send a small alert
+message to the users via LoraWan, 3G or satellite.
 
-## REQ
-
-## A map function will need to display all the locations with cameras installed in the region
+*REQ A map function will need to display all the locations with cameras installed in the region
 
 # Architecture Principles
 
@@ -113,8 +111,8 @@ Lack of APIs on third party systems
 
 # Architectural Decision Records
 
-## Use of healthcheck pattern
-## Use of API Gateway for exposing a specific API to access Observations and related material (videos, images)
-## Pub/Sub message broker for receiving information from the cameras
-## Event-driven microservices architecture
-## Cameras must provide Software Over the Air functionality via specific topic in the message broker
+* Use of healthcheck pattern
+* Use of API Gateway for exposing a specific API to access Observations and related material (videos, images)
+* Pub/Sub message broker for receiving information from the cameras
+* Event-driven microservices architecture
+* Cameras must provide Software Over the Air functionality via specific topic in the message broker
