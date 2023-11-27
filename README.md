@@ -77,12 +77,12 @@ Also, these contexts will help in identifying the Events that need to be generat
 
 The Bounded Contexts are enumerated below and detailed in the **[Bounded Contexts document](/docs/boundedcontexts/boundedcontexts.md)**
 1. Camera Deployment and Management
-2. Image Processing and Analysis
-3. User Interaction and Management
-4. Wildlife Monitoring and Identification
+2. Wildlife Monitoring and Identification
+3. Image Processing and Analysis
+4. User Interaction and Management
 5. Streaming and Event Handling
 
-Following on from the Bounded Contexts we are proposing the following architecture captured in [this diagram](/images/archdiagram/Components.jpg)
+Following on from the Bounded Contexts we are proposing the following architecture captured in ![this diagram](/images/archdiagram/Components.jpg)
 
 # Requirements
 
@@ -129,6 +129,6 @@ Lack of APIs on third party systems
 
 * Use of healthcheck pattern
 * Use of API Gateway for exposing a specific API to access Observations and related material (videos, images)
-* Pub/Sub message broker for receiving information from the cameras
+* Pub/Sub message broker for receiving information from the cameras or integration within the system
 * Event-driven microservices architecture
 * Cameras must provide Software Over the Air functionality via specific topic in the message broker

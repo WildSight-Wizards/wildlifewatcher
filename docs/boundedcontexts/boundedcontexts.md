@@ -1,3 +1,8 @@
+# Overview
+A high level view of the identified Bounded Contexts is in the diagram below:
+
+![Bounded Contexts](/images/archdiagram/wildlifeai-cntxts.jpg)
+
 # Camera Deployment and Management:
 This context involves the setup, configuration, and maintenance of cameras. It includes registering new cameras to the system, managing firmware updates, and handling camera health and status.
 We will require the cameras to be programmed to accommodate the following functions:
@@ -26,15 +31,35 @@ The components in this Bounded Context consume "Image Tagging" and "Video taggin
 
 We have also included the internal Machine Learning system for Image recognition in this Bounded Context as it is closely dependent on the imaged processed but it can also be a separate context if it needs to be evolving independently or the internal organisation has a dedicated department for it.
 
+## Key Responsibilities:
+* Image Reception and Storage - Handling the influx of images from various cameras. Secure and efficient storage of images for processing and archival purposes.
+* Image Pre-processing - Preparing images for analysis, which may include cleaning, normalization, and transformation
+* Wildlife Detection and Classification - Applying algorithms to detect wildlife within images. Classifying the type of wildlife using machine learning models or other image recognition techniques, internal or external
+* Quality Control and Verification- Implementing mechanisms to ensure the accuracy and reliability of the image analysis. Potentially integrating manual verification processes for uncertain or critical cases.
+* Integration with External Databases or APIs - Linking analysis results with external wildlife databases or APIs for additional information or verification.
 
 # User Interaction and Management:
 
 This context covers everything related to user accounts, including registration, authentication, profile management, and providing users with a dashboard or interface to interact with the system.
 
+## Key Responsibilities:
+
+* User Account Management- Handling user registrations, profile management, authentication, and authorization.
+* User Dashboard and Interaction - Providing a user interface for interacting with the system, such as viewing camera feeds, observations, and reports.
+* Access Control and Permissions - Managing what each user can see and do within the system based on their role or specific permissions.
+* User Notification System - Sending alerts and updates to users about new observations, system updates, or other relevant information.
+* User Feedback and Support - Providing channels for user feedback, support requests, and communication with system administrators or support teams.
+* User Education and Resources - Offering educational resources about wildlife monitoring, camera installation, and data interpretation.
 
 # Streaming and Event Handling:
 
 This involves the real-time processing of data streams from cameras, handling the event-driven architecture, ensuring messages and events are correctly brokered between components, and managing the flow of information in the system.
+
+## Key Responsibilities:
+* Event Streaming- Handling real-time data streams from various cameras. Ingesting and processing these streams for events like motion detection, camera status updates, camera heartbeat etc.
+* Message Brokerage - Facilitating communication between different parts of the system through a message broker. Ensuring reliable and efficient delivery of messages (events, commands, data updates).
+* Integration Services - Providing services for integrating different bounded contexts and external systems. Handling the translation and transformation of data as it moves between contexts.
+* Event Storage and Management - Storing events for historical analysis, auditing, or delayed processing (Event Storming). Managing the lifecycle of events in the system.
 
 # Data Management and Storage (as a cross-cutting concern within each context):
 
